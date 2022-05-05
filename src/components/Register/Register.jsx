@@ -17,24 +17,30 @@ const Register = () => {
     return dataProps.every((prop) => !!data[prop]);
   };
 
-  // const handleSubmit = async () => {
-  //   try {
-  //     const result = await axios.post(
-  //       "/register",
-  //       JSON.stringify({
-  //         username: data["username"],
-  //         password: data["password"],
-  //       }),
-  //       {
-  //         headers: { "Content-Type": "application/json" },
-  //         withCredentials: true,
-  //       }
-  //     );
-  //     setSuccess(true);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
+  const handleSubmit = async () => {
+    try {
+      const result = await axios.post(
+        "/register",
+        JSON.stringify({
+          username: data["username"],
+          password: data["password"],
+        }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      setSuccess(true);
+    } catch (e) {
+      if (!e?.response) {
+        setErrorMsg("No Server Response");
+      } else if (e.response?.status === 409) {
+        setErrorMsg("Username Taken");
+      } else {
+        setErrorMsg("Registration Failed");
+      }
+    }
+  };
 
   return (
     <div className="register_form">
@@ -69,7 +75,7 @@ const Register = () => {
             variant="contained"
             margin="normal"
             disabled={!isSubmitEnabled()}
-            // onClick={handleSubmit}
+            onClick={handleSubmit}
           >
             Sign Up
           </Button>
