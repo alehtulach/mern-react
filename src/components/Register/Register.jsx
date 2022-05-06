@@ -21,14 +21,14 @@ const Register = () => {
     try {
       const result = await axios.post(
         "/register",
-        JSON.stringify({
+        {
           username: data["username"],
           password: data["password"],
-        }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
         }
+        // {
+        //   headers: { "Content-Type": "application/json" },
+        //   withCredentials: true,
+        // }
       );
       setSuccess(true);
     } catch (e) {
