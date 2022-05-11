@@ -9,6 +9,7 @@ import Editor from "./components/Editor/Editor";
 import Admin from "./components/Admin/Admin";
 import Lounge from "./components/Lounge/Lounge";
 import Missing from "./components/Missing/Missing";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
 
 const App = () => {
   return (
@@ -21,10 +22,12 @@ const App = () => {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* protected routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="editor" element={<Editor />} />
-        <Route path="admin" element={<Admin />} />
-        <Route path="lounge" element={<Lounge />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/" element={<Home />} />
+          <Route path="editor" element={<Editor />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="lounge" element={<Lounge />} />
+        </Route>
 
         {/* catch all */}
         <Route path="*" element={<Missing />} />

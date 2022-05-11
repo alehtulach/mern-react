@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Link, TextField } from "@mui/material";
-import AuthContext from "../../context/AuthProvider";
-import "./styles.scss";
 import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
+import "./styles.scss";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const [data, setData] = useState({});
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -51,7 +51,7 @@ const Login = () => {
       {success ? (
         <>
           <h1>You are logged in!</h1>
-          <Link href="#" underline="always">
+          <Link href="#" underline="always" onClick={() => navigate("/")}>
             Go to Home
           </Link>
         </>
