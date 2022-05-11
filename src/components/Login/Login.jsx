@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Link, TextField } from "@mui/material";
 import AuthContext from "../../context/AuthProvider";
 import "./styles.scss";
 import axios from "../../api/axios";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
   const [data, setData] = useState({});
   const [success, setSuccess] = useState(false);
@@ -82,7 +84,11 @@ const Login = () => {
             Sign In
           </Button>
           <p>Need an Account?</p>
-          <Link href="#" underline="always">
+          <Link
+            href="#"
+            underline="always"
+            onClick={() => navigate("/register")}
+          >
             Sign Up
           </Link>
         </>

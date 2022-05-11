@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TextField, Button, Link } from "@mui/material";
 import axios from "../../api/axios";
 import "./styles.scss";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({});
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -80,7 +82,7 @@ const Register = () => {
             Sign Up
           </Button>
           <p>Already registered?</p>
-          <Link href="#" underline="always">
+          <Link href="#" underline="always" onClick={() => navigate("/login")}>
             Sign In
           </Link>
         </>
