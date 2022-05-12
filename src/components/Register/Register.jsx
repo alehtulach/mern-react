@@ -49,7 +49,7 @@ const Register = () => {
       {success ? (
         <>
           <h1>Success!</h1>
-          <Link href="#" underline="always">
+          <Link href="#" underline="always" onClick={() => navigate("/login")}>
             Sign In
           </Link>
         </>

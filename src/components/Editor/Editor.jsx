@@ -5,7 +5,7 @@ const Editor = () => {
     <section>
       <h1>Editors Page</h1>
       <br />
-      <p>You must have been assigned an Editor role.</p>
+      <p>You are assigned an Editor role.</p>
       <div>
         <Link to="/">Home</Link>
       </div>
