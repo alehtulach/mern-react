@@ -27,10 +27,14 @@ const Login = () => {
     try {
       const username = data["username"];
       const password = data["password"];
-      const response = await axios.post("/auth", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "/auth",
+        { username, password },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
       setAuth({ username, password, roles, accessToken });

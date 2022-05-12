@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+import Users from "../Users/Users";
 
 const Admin = () => {
   return (
     <section>
       <h1>Admins Page</h1>
       <br />
-      <p>You are assigned an Admin role.</p>
+      <Users />
+      <br />
       <div>
         <Link to="/">Home</Link>
       </div>
