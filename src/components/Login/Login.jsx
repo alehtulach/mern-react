@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Link, TextField } from "@mui/material";
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
-import "./styles.scss";
+import styles from "./styles.scss";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -53,8 +53,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login_form">
-      <p className="error">{errorMsg}</p>
+    <div className={styles.form}>
+      <p className={styles.error}>{errorMsg}</p>
       <h1>Sign In</h1>
       <TextField
         id="username"

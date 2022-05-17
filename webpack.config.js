@@ -24,7 +24,18 @@ module.exports = {
     rules: [
       {
         test: /.s?css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]__[hash:base64:5]",
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
         test: /\.jsx?$/,

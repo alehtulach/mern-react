@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Link } from "@mui/material";
 import axios from "../../api/axios";
-import "./styles.scss";
+import styles from "./styles.scss";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register_form">
+    <div className={styles.form}>
       {success ? (
         <>
           <h1>Success!</h1>
@@ -55,7 +55,7 @@ const Register = () => {
         </>
       ) : (
         <>
-          <p className="error">{errorMsg}</p>
+          <p className={styles.error}>{errorMsg}</p>
           <h1>Register</h1>
           <TextField
             id="username"
